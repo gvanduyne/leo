@@ -155,7 +155,7 @@ def construct_graph(outer_model_config):
 def run_training_loop(checkpoint_path):
   """Runs the training loop, either saving a checkpoint or evaluating it."""
   outer_model_config = config.get_outer_model_config()
-  tf.logging.info("outer_model_config: {}".format(outer_model_config))
+  tf.compat.v1.logging.info("outer_model_config: {}".format(outer_model_config))
   (train_op, global_step, metatrain_accuracy, metavalid_accuracy,
    metatest_accuracy) = construct_graph(outer_model_config)
 
@@ -209,4 +209,4 @@ def main(argv):
 
 
 if __name__ == "__main__":
-  tf.app.run()
+  tf.compat.v1.app.run()

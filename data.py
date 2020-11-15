@@ -90,7 +90,7 @@ class DataProvider(object):
   def _load_data(self):
     """Loads data into memory and caches ."""
     raw_data = self._load(
-        tf.gfile.Open(self._get_full_pickle_path(self._dataset_split), "rb"))
+        tf.io.gfile.GFile(self._get_full_pickle_path(self._dataset_split), "rb"))
     if self._dataset_split == MetaSplit.TRAIN and self._config["train_on_val"]:
       valid_data = self._load(
           tf.gfile.Open(self._get_full_pickle_path(MetaSplit.VALID), "rb"))
@@ -226,7 +226,7 @@ class DataProvider(object):
                              [tf.float32, tf.int32, tf.string])
     instance_input, instance_output, instance_info = output_list
     instance_input = tf.nn.l2_normalize(instance_input, axis=-1)
-    instance_info = tf.regex_replace(instance_info, "\x00*", "")
+    instance_info = tf.strings.regex_replace(instance_info, "\x00*", "")
 
     if self._verbose:
       tf.logging.info("input_batch: {} ".format(instance_input.shape))
@@ -304,7 +304,7 @@ class DataProvider(object):
     tr_label_sum = tf.reduce_sum(tr_output)/tr_size
     val_label_sum = tf.reduce_sum(val_output)/val_size
     all_label_asserts = [
-        tf.assert_equal(tf.to_int32(tr_label_sum), correct_label_sum),
-        tf.assert_equal(tf.to_int32(val_label_sum), correct_label_sum),
+        tf.compat.v1.assert_equal(tf.to_int32(tr_label_sum), correct_label_sum),
+        tf.compat.v1.assert_equal(tf.to_int32(val_label_sum), correct_label_sum),
     ]
     return all_label_asserts
