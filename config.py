@@ -99,7 +99,7 @@ def get_data_config():
   config["dataset_name"] = FLAGS.dataset_name
   config["embedding_crop"] = FLAGS.embedding_crop
   config["train_on_val"] = FLAGS.train_on_val
-  config["total_examples_per_class"] = 50
+  config["total_examples_per_class"] = 20
   return config
 
 
