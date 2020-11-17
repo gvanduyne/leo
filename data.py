@@ -29,7 +29,7 @@ import six
 import tensorflow as tf
 
 
-NDIM = 640
+NDIM = 2097
 
 ProblemInstance = collections.namedtuple(
     "ProblemInstance",
