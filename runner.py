@@ -190,7 +190,7 @@ def run_training_loop(checkpoint_path):
           tf.logging.info("Step: {} meta-train accuracy: {}".format(
               global_step_ev, metatrain_accuracy_ev))
     else:
-      assert not FLAGS.checkpoint_steps
+      # assert not FLAGS.checkpoint_steps
       num_metatest_estimates = (
           10000 // outer_model_config["metatest_batch_size"])
 
