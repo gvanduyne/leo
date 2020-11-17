@@ -79,7 +79,7 @@ flags.DEFINE_integer("metavalid_batch_size", 200, "Number of meta-validation "
                      "problem instances.")
 flags.DEFINE_integer("metatest_batch_size", 200, "Number of meta-testing "
                      "problem instances.")
-flags.DEFINE_integer("num_steps_limit", int(1e5), "Number of steps to train "
+flags.DEFINE_integer("num_steps_limit", int(15000), "Number of steps to train "
                      "for.")
 flags.DEFINE_float("outer_lr", 1e-4, "Outer (metatraining) loop learning "
                    "rate.")
