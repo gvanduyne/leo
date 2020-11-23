@@ -50,6 +50,7 @@ class MetaDataset(StrEnum):
   """Datasets supported by the DataProvider class."""
   MINI = "miniImageNet"
   TIERED = "tieredImageNet"
+  INCIDENTS = "incidents"
 
 
 class EmbeddingCrop(StrEnum):
